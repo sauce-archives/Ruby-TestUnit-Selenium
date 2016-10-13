@@ -12,13 +12,13 @@ class BlogTests < Test::Unit::TestCase
         caps["platform"] = "#{ENV['platform']}"
         caps["name"] = @method_name
 
-        url = "http://#{ENV['SAUCE_USERNAME']}:#{ENV['SAUCE_ACCESS_KEY']}@ondemand.saucelabs.com:80/wd/hub".strip
+        url = "https://#{ENV['SAUCE_USERNAME']}:#{ENV['SAUCE_ACCESS_KEY']}@ondemand.saucelabs.com:443/wd/hub".strip
         @driver = Selenium::WebDriver.for(:remote, :url => url, :desired_capabilities => caps)
     end
 
     def test_post
-        # navigate to the saucelabs page 
-        @driver.get "https://saucelabs.com" 
+        # navigate to the saucelabs page
+        @driver.get "https://saucelabs.com"
 
         title = @driver.title()
         assert_equal(title, "Sauce Labs: Selenium Testing, Mobile Testing, JS Unit Testing and More")
